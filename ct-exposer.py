@@ -49,11 +49,16 @@ def get_dns_history_from_google(session_hash):
         f"https://transparencyreport.google.com/transparencyreport/api/v3/httpsreport/ct/certbyhash?hash={session_hash}",
         headers=GOGGLE_HEADERS, verify=False, cookies=GOOGLE_COOKIE).content.decode().lstrip(")]}\'"))
     # (res)
+    d =[]
     try:
-        domains = res[0][1][7]
+        for domain in res[0][1][7]:
+            if domain.startswith("*."):
+                d.append(domain.lstrip("*."))
+            else:
+                d.append(domain)
     except TypeError:
         return []
-    return domains
+    return d
 
 
 def main(domain, masscanOutput, urlOutput):
@@ -172,7 +177,14 @@ def collectResponse(domain):
 
 
 def collect_google_domains(domains):
-    return list(set([domain[1] for domain in domains]))
+    d = []
+    for domain in domains:
+        domain = domain[1]
+        d.append(domain)
+        if domain.startswith("*."):
+            d.append(domain.lstrip("*."))
+    return d
+    #return list(set([domain[1] for domain in domains]))
 
 
 def collectDomains(response):
