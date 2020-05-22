@@ -75,7 +75,7 @@ def main(domain, masscanOutput, urlOutput):
     domains.extend(collect_google_domains(google_domains))
     pool = Pool(15)
     greenlet_google = [pool.spawn(get_dns_history_from_google, domain[5]) for domain in
-                       google_domains[:5]]  # Only the top 5 of google dns history
+                       google_domains]  # Only the top 5 of google dns history
     pool.join(timeout=1)
     for g_greenlet in greenlet_google:
         result = g_greenlet.value
