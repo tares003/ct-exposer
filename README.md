@@ -2,6 +2,9 @@
 
 # Discover sub-domains by searching through Certificate Transparency logs
 
+**THIS IS INCORPORATES https://transparencyreport.google.com API **
+
+
 ## What is CT?
 Certificate Transparency (CT) is an experimental IETF standard. The goal of it was to allow the public to audit which certificates were created by Certificate Authorities (CA). TLS has a weakness that comes from the large list of CAs that your browser implicitly trusts. If any of those CAs were to maliciously create a new certificate for a domain, your browser would trust it. CT adds benefits to TLS certificate trust: Companies can monitor who is creating certificates for the domains they own. It also allows browsers to verify that the certificate for a given domain is in the public log record.
 
