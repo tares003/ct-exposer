@@ -2,7 +2,7 @@
 
 # Discover sub-domains by searching through Certificate Transparency logs
 
-**THIS IS INCORPORATES https://transparencyreport.google.com API **
+## THIS IS INCORPORATES https://transparencyreport.google.com API 
 
 
 ## What is CT?
